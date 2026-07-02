@@ -7,6 +7,7 @@ const FORMSPREE_URL = "https://formspree.io/f/xpqgdpep";
 
 const packs = [
   "Pack Accompagnement – 800 DH",
+  "Pack Faisabilité – 300 DH",
   "Pack MCOT – 500 DH",
   "Pack Présentation – 1 800 DH",
   "Pack VIP – 3 000 DH",

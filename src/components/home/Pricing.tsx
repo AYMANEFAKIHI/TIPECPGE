@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useLocation } from "wouter";
-import { CheckCircle2, Zap, FileText, Mic, Crown, GraduationCap } from "lucide-react";
+import { CheckCircle2, Zap, FlaskConical, FileText, Mic, Crown, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const packs = [
@@ -9,20 +9,30 @@ const packs = [
     name: "Pack Accompagnement",
     badge: "Pack 1",
     price: "800",
-    tagline: "Conseil, sujet & faisabilité",
+    tagline: "Conseil, direction & blocages",
     features: [
       "Aide au choix du sujet",
       "Brainstorming guidé",
       "Conseils bibliographiques",
+      "Réponses aux questions de blocage",
+    ],
+  },
+  {
+    icon: FlaskConical,
+    name: "Pack Faisabilité",
+    badge: "Pack 2",
+    price: "300",
+    tagline: "Valider votre sujet",
+    features: [
       "Étude de faisabilité",
       "Analyse des points forts / faibles",
-      "Réponses aux questions de blocage",
+      "Encadrement scientifique",
     ],
   },
   {
     icon: FileText,
     name: "Pack MCOT",
-    badge: "Pack 2",
+    badge: "Pack 3",
     price: "500",
     tagline: "Le document officiel",
     features: [
@@ -34,7 +44,7 @@ const packs = [
   {
     icon: Mic,
     name: "Pack Présentation",
-    badge: "Pack 3",
+    badge: "Pack 4",
     price: "1 800",
     tagline: "Maîtriser l'oral",
     features: [
@@ -60,7 +70,7 @@ const packs = [
   {
     icon: GraduationCap,
     name: "Pack CNAEM / ISCAE",
-    badge: "Pack 5",
+    badge: "Pack 6",
     price: "3 000",
     tagline: "Concours marocains",
     features: [
