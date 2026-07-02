@@ -6,13 +6,11 @@ import { Button } from "@/components/ui/button";
 const FORMSPREE_URL = "https://formspree.io/f/xpqgdpep";
 
 const packs = [
-  "Pack 1 – Conseil",
-  "Pack 2 – Question",
-  "Pack 3 – Faisabilité",
-  "Pack 4 – MCOT",
-  "Pack 5 – Présentation",
-  "Pack VIP",
-  "Pack CNAEM / ISCAE",
+  "Pack Accompagnement – 800 DH",
+  "Pack MCOT – 500 DH",
+  "Pack Présentation – 1 800 DH",
+  "Pack VIP – 3 000 DH",
+  "Pack CNAEM / ISCAE – 3 000 DH",
 ];
 
 const inputCls = "flex h-11 w-full rounded-md border border-border/60 bg-background/50 px-3 py-2 text-sm font-mono placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/60 focus:border-primary/60 transition-colors";

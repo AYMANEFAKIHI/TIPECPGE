@@ -1,48 +1,47 @@
 import { motion } from "framer-motion";
 import { useLocation } from "wouter";
-import { CheckCircle2, Zap, BookOpen, HelpCircle, FileText, Mic, Crown, GraduationCap } from "lucide-react";
+import { CheckCircle2, Zap, FileText, Mic, Crown, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const packs = [
   {
-    icon: HelpCircle,
-    name: "Pack Conseil",
-    badge: "Pack 1",
-    price: "300",
-    tagline: "Trouver la bonne direction",
-    features: ["Aide au choix du sujet", "Brainstorming guidé", "Conseils bibliographiques"],
-  },
-  {
-    icon: BookOpen,
-    name: "Pack Question",
-    badge: "Pack 2",
-    price: "300",
-    tagline: "Résoudre les blocages",
-    features: ["Ressources exclusives", "Réponses aux questions", "Aide à la résolution"],
-  },
-  {
     icon: Zap,
-    name: "Pack Faisabilité",
-    badge: "Pack 3",
-    price: "300",
-    tagline: "Valider votre sujet",
-    features: ["Étude de faisabilité", "Analyse des points forts/faibles", "Encadrement scientifique"],
+    name: "Pack Accompagnement",
+    badge: "Pack 1",
+    price: "800",
+    tagline: "Conseil, sujet & faisabilité",
+    features: [
+      "Aide au choix du sujet",
+      "Brainstorming guidé",
+      "Conseils bibliographiques",
+      "Étude de faisabilité",
+      "Analyse des points forts / faibles",
+      "Réponses aux questions de blocage",
+    ],
   },
   {
     icon: FileText,
     name: "Pack MCOT",
-    badge: "Pack 4",
+    badge: "Pack 2",
     price: "500",
     tagline: "Le document officiel",
-    features: ["Rédaction MCOT", "Vérification des objectifs", "Optimisation du document"],
+    features: [
+      "Rédaction MCOT complète",
+      "Vérification des objectifs",
+      "Optimisation du document",
+    ],
   },
   {
     icon: Mic,
     name: "Pack Présentation",
-    badge: "Pack 5",
+    badge: "Pack 3",
     price: "1 800",
     tagline: "Maîtriser l'oral",
-    features: ["Préparation orale", "Simulation devant jury", "Réalisation de présentation"],
+    features: [
+      "Préparation orale complète",
+      "Simulation devant jury",
+      "Réalisation de présentation",
+    ],
   },
   {
     icon: Crown,
@@ -50,22 +49,30 @@ const packs = [
     badge: "Recommandé",
     price: "3 000",
     tagline: "L'accompagnement complet",
-    features: ["Tous les packs inclus", "Accompagnement de A à Z", "Réalisation individuelle", "Priorité et disponibilité"],
+    features: [
+      "Tous les packs inclus",
+      "Accompagnement de A à Z",
+      "Réalisation individuelle",
+      "Priorité et disponibilité",
+    ],
     isVip: true,
   },
   {
     icon: GraduationCap,
     name: "Pack CNAEM / ISCAE",
-    badge: "Pack 7",
+    badge: "Pack 5",
     price: "3 000",
     tagline: "Concours marocains",
-    features: ["Préparation écrit et oral", "Accompagnement personnalisé", "Réalisation individuelle"],
+    features: [
+      "Préparation écrit et oral",
+      "Accompagnement personnalisé",
+      "Réalisation individuelle",
+    ],
   },
 ];
 
 export const Pricing = () => {
   const [, navigate] = useLocation();
-  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <section id="pricing" className="py-24 relative overflow-hidden">
@@ -100,30 +107,23 @@ export const Pricing = () => {
               className={pack.isVip ? "sm:col-span-2 lg:col-span-1" : ""}
             >
               {pack.isVip ? (
-                /* VIP CARD */
                 <div className="relative h-full rounded-xl border border-primary/50 bg-gradient-to-br from-primary/10 via-card to-accent/5 overflow-hidden shadow-[0_0_40px_rgba(34,197,94,0.15)] glow-pulse">
-                  {/* Animated border top */}
                   <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-accent to-primary animate-gradient" />
-
-                  {/* Recommended badge */}
                   <div className="absolute top-4 right-4">
                     <span className="px-2.5 py-1 bg-primary text-primary-foreground text-xs font-bold rounded-full font-mono uppercase tracking-wider">
                       Recommandé
                     </span>
                   </div>
-
                   <div className="p-7">
                     <div className="w-11 h-11 rounded-lg bg-primary/20 flex items-center justify-center mb-4">
                       <Crown className="w-5 h-5 text-primary" />
                     </div>
                     <h3 className="text-2xl font-bold text-primary mb-1">{pack.name}</h3>
                     <p className="text-sm text-muted-foreground mb-5">{pack.tagline}</p>
-
                     <div className="flex items-baseline gap-1 mb-6">
                       <span className="text-5xl font-black font-mono tabular-nums">{pack.price}</span>
                       <span className="text-muted-foreground font-semibold">DH</span>
                     </div>
-
                     <ul className="space-y-3 mb-7">
                       {pack.features.map((f, j) => (
                         <li key={j} className="flex items-center gap-2.5 text-sm">
@@ -132,7 +132,6 @@ export const Pricing = () => {
                         </li>
                       ))}
                     </ul>
-
                     <Button
                       className="w-full h-11 font-semibold shadow-lg shadow-primary/25 rounded-lg"
                       onClick={() => navigate("/contact")}
@@ -143,10 +142,8 @@ export const Pricing = () => {
                   </div>
                 </div>
               ) : (
-                /* REGULAR CARD */
                 <div className="relative h-full rounded-xl border border-border/60 bg-card/60 backdrop-blur-sm overflow-hidden hover:border-primary/30 transition-all duration-300 hover:shadow-md group">
                   <div className="p-6">
-                    {/* Header */}
                     <div className="flex items-start justify-between mb-5">
                       <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
                         <pack.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
@@ -155,15 +152,12 @@ export const Pricing = () => {
                         {pack.badge}
                       </span>
                     </div>
-
                     <h3 className="text-lg font-bold mb-1 group-hover:text-primary transition-colors">{pack.name}</h3>
                     <p className="text-xs text-muted-foreground mb-4">{pack.tagline}</p>
-
                     <div className="flex items-baseline gap-1 mb-5">
                       <span className="text-3xl font-black font-mono tabular-nums">{pack.price}</span>
                       <span className="text-muted-foreground text-sm font-semibold">DH</span>
                     </div>
-
                     <ul className="space-y-2.5 mb-6">
                       {pack.features.map((f, j) => (
                         <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -172,7 +166,6 @@ export const Pricing = () => {
                         </li>
                       ))}
                     </ul>
-
                     <Button
                       variant="outline"
                       className="w-full h-10 rounded-lg text-sm hover:bg-primary/5 hover:border-primary/40 hover:text-primary transition-all"
@@ -188,7 +181,6 @@ export const Pricing = () => {
           ))}
         </div>
 
-        {/* Footer note */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
