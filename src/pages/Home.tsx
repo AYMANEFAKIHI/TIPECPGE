@@ -7,14 +7,17 @@ import { Features } from "@/components/home/Features";
 import { Services } from "@/components/home/Services";
 import { Pricing } from "@/components/home/Pricing";
 import { Testimonials } from "@/components/home/Testimonials";
+import { About } from "@/components/home/About";
+import { FAQ } from "@/components/home/FAQSimple";
+import { FinalCTA } from "@/components/home/FinalCTA";
 import { Social } from "@/components/home/Social";
 import { useSEO } from "@/lib/useSEO";
 
 const PLATFORM_LINKS = [
-  { label: "Dashboard CNC 2026", desc: "Calendrier, countdown, alertes en temps réel", href: "/cnc-2026" },
+  { label: "Dashboard CNC 2026",   desc: "Calendrier, countdown, alertes en temps réel",       href: "/cnc-2026" },
   { label: "Calculateur de notes", desc: "Ta note finale estimée selon les coefficients officiels", href: "/calculateur" },
-  { label: "Écoles & filières", desc: "19 écoles, places, frais, spécialités", href: "/ecoles" },
-  { label: "Méthodologie TIPE", desc: "Notre méthode en 6 étapes, MCOT, DOT, oral", href: "/methodologie" },
+  { label: "Écoles & filières",    desc: "19 écoles, places, frais, spécialités",               href: "/ecoles" },
+  { label: "Méthodologie TIPE",    desc: "Notre méthode en 6 étapes, MCOT, DOT, oral",          href: "/methodologie" },
 ];
 
 const PlatformTeaser = () => (
@@ -55,6 +58,9 @@ export default function Home() {
       <PlatformTeaser />
       <Pricing />
       <Testimonials />
+      <About />
+      <FAQ />
+      <FinalCTA />
       <Social />
     </Layout>
   );

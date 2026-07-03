@@ -427,7 +427,7 @@ export const Hero = () => {
           <StatCard value={200} label="Étudiants accompagnés" prefix="+" />
           <StatCard value={95} label="Taux de réussite" suffix="%" />
           <StatCard value={50} label="Grandes Écoles intégrées" prefix="+" />
-          <StatCard value={5} label="Note moyenne" suffix="★" />
+          <StatCard value={6} label="Années d'expérience" suffix="+" />
         </motion.div>
       </div>
 
