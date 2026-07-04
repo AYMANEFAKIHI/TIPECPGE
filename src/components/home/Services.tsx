@@ -16,6 +16,7 @@ const services = [
     ],
     color: "primary",
     gradient: "from-primary/15 to-transparent",
+    href: "/methodologie",
   },
   {
     icon: PresentationIcon,
@@ -30,6 +31,7 @@ const services = [
     ],
     color: "accent",
     gradient: "from-accent/15 to-transparent",
+    href: "/methodologie#oral",
   },
   {
     icon: BrainCircuit,
@@ -44,6 +46,7 @@ const services = [
     ],
     color: "chart-4",
     gradient: "from-chart-4/15 to-transparent",
+    href: "/contact",
   },
 ];
 
@@ -127,7 +130,7 @@ export const Services = () => {
                     </ul>
 
                     <button
-                      onClick={() => navigate("/contact")}
+                      onClick={() => s.href ? navigate(s.href) : navigate("/contact")}
                       className={`mt-5 flex items-center gap-1.5 text-sm font-semibold ${c.tag.split(" ")[0]} opacity-70 group-hover:opacity-100 transition-opacity`}
                       data-testid={`button-service-${i}`}
                     >

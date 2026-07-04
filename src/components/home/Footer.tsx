@@ -45,6 +45,10 @@ export const Footer = () => (
               <Phone className="w-3.5 h-3.5 shrink-0" />
               +212 712 177 517
             </a>
+            <a href="mailto:faymane12@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Mail className="w-3.5 h-3.5 shrink-0" />
+              faymane12@gmail.com
+            </a>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <MapPin className="w-3.5 h-3.5 shrink-0" />
               Rabat, Maroc

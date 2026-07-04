@@ -5,7 +5,6 @@ import {
   AlertTriangle, Clock, CheckCircle2,
   XCircle, Info
 } from "lucide-react";
-import { InteractiveTimeline } from "@/components/home/InteractiveTimeline";
 
 const TARGET_DATE = new Date("2026-05-14T08:00:00");
 
@@ -72,11 +71,6 @@ export const CNCDashboard = () => {
               </div>
             ))}
           </div>
-        </motion.div>
-
-        {/* Interactive Timeline — full width */}
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-6">
-          <InteractiveTimeline />
         </motion.div>
 
         {/* Alerts */}
