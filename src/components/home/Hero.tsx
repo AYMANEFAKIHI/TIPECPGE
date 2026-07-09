@@ -250,11 +250,15 @@ const SimulationPlot = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    let paused = false;
+    let visible = true;
     const SPEED = 2.5; // points per frame
 
+    // Ne pas animer quand le canvas est hors de l'écran (économie batterie/CPU)
+    const obs = new IntersectionObserver(([e]) => { visible = e.isIntersecting; });
+    obs.observe(canvas);
+
     const loop = () => {
-      if (!paused) {
+      if (visible) {
         progressRef.current += SPEED;
         if (progressRef.current > POINTS + 60) progressRef.current = 0; // restart with a pause
         draw();
@@ -263,7 +267,7 @@ const SimulationPlot = () => {
     };
     animRef.current = requestAnimationFrame(loop);
 
-    return () => { paused = true; cancelAnimationFrame(animRef.current); };
+    return () => { obs.disconnect(); cancelAnimationFrame(animRef.current); };
   }, [draw]);
 
   return (
@@ -365,7 +369,7 @@ export const Hero = () => {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-8 border border-primary/25 font-mono"
         >
           <FlaskConical className="w-4 h-4" />
-          La référence TIPE n°1 au Maroc
+          Votre référence TIPE au Maroc
         </motion.div>
 
         {/* Headline */}

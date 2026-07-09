@@ -14,27 +14,34 @@ const packs = [
   "Pack CNAEM / ISCAE – 3 000 DH",
 ];
 
-const inputCls = "flex h-11 w-full rounded-md border border-border/60 bg-background/50 px-3 py-2 text-sm font-mono placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/60 focus:border-primary/60 transition-colors";
+const inputCls = "flex h-11 w-full rounded-md border border-border/60 bg-background/50 px-3 py-2 text-sm font-mono placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/60 focus:border-primary/60 transition-colors aria-[invalid=true]:border-red-500/70 aria-[invalid=true]:ring-red-500/40";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Numéro marocain : accepte 06/07 xx xx xx xx, +212…, espaces/tirets tolérés
+const PHONE_RE = /^(?:\+?212|0)\s?[5-7](?:[\s.-]?\d){8}$/;
 
 export const Contact = () => {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState("");
-  const [vals, setVals] = useState({ firstName: "", lastName: "", email: "", phone: "", pack: "" });
+  const [vals, setVals] = useState({ firstName: "", lastName: "", email: "", phone: "", pack: "", message: "" });
+  const [honeypot, setHoneypot] = useState("");
   const [errs, setErrs] = useState<Record<string, string>>({});
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (vals.firstName.length < 2) e.firstName = "Le prénom est requis";
-    if (vals.lastName.length < 2) e.lastName = "Le nom est requis";
-    if (!vals.email.includes("@")) e.email = "Email invalide";
-    if (vals.phone.length < 9) e.phone = "Numéro invalide";
+    if (vals.firstName.trim().length < 2) e.firstName = "Le prénom est requis";
+    if (vals.lastName.trim().length < 2) e.lastName = "Le nom est requis";
+    if (!EMAIL_RE.test(vals.email.trim())) e.email = "Email invalide";
+    if (!PHONE_RE.test(vals.phone.trim())) e.phone = "Numéro de téléphone invalide";
     if (!vals.pack) e.pack = "Veuillez choisir un pack";
     return e;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Honeypot anti-spam : un bot remplit ce champ caché → on ignore silencieusement
+    if (honeypot) { setSuccess(true); return; }
     const found = validate();
     if (Object.keys(found).length) { setErrs(found); return; }
     setLoading(true);
@@ -49,11 +56,13 @@ export const Contact = () => {
           email: vals.email,
           telephone: vals.phone,
           pack: vals.pack,
+          message: vals.message,
         }),
       });
       if (res.ok) {
         setSuccess(true);
-        setVals({ firstName: "", lastName: "", email: "", phone: "", pack: "" });
+        setVals({ firstName: "", lastName: "", email: "", phone: "", pack: "", message: "" });
+        setErrs({});
         setTimeout(() => setSuccess(false), 6000);
       } else {
         setServerError("Une erreur est survenue. Réessayez ou contactez-nous sur WhatsApp.");
@@ -65,8 +74,10 @@ export const Contact = () => {
     }
   };
 
-  const set = (k: keyof typeof vals) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+  const set = (k: keyof typeof vals) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setVals((v) => ({ ...v, [k]: e.target.value }));
+    if (errs[k]) setErrs((prev) => { const n = { ...prev }; delete n[k]; return n; });
+  };
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
@@ -104,35 +115,58 @@ export const Contact = () => {
             )}
           </AnimatePresence>
           <div className="p-7 md:p-9">
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+              {/* Honeypot anti-spam — caché aux humains, rempli par les bots */}
+              <div className="absolute -left-[9999px] top-0" aria-hidden="true">
+                <label htmlFor="website">Ne pas remplir</label>
+                <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off"
+                  value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {(["firstName", "lastName"] as const).map((name) => (
                   <div key={name} className="space-y-1.5">
-                    <label className="text-sm font-mono text-muted-foreground">{name === "firstName" ? "prénom" : "nom"}</label>
-                    <input className={inputCls} placeholder={name === "firstName" ? "Ahmed" : "Benali"} value={vals[name]} onChange={set(name)} />
-                    {errs[name] && <p className="text-xs text-red-500">{errs[name]}</p>}
+                    <label htmlFor={name} className="text-sm font-mono text-muted-foreground">{name === "firstName" ? "prénom" : "nom"}</label>
+                    <input id={name} name={name} autoComplete={name === "firstName" ? "given-name" : "family-name"}
+                      className={inputCls} placeholder={name === "firstName" ? "Ahmed" : "Benali"}
+                      value={vals[name]} onChange={set(name)}
+                      aria-invalid={!!errs[name]} aria-describedby={errs[name] ? `${name}-err` : undefined} />
+                    {errs[name] && <p id={`${name}-err`} className="text-xs text-red-500">{errs[name]}</p>}
                   </div>
                 ))}
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="space-y-1.5">
-                  <label className="text-sm font-mono text-muted-foreground">email</label>
-                  <input type="email" className={inputCls} placeholder="ahmed@email.com" value={vals.email} onChange={set("email")} />
-                  {errs.email && <p className="text-xs text-red-500">{errs.email}</p>}
+                  <label htmlFor="email" className="text-sm font-mono text-muted-foreground">email</label>
+                  <input id="email" name="email" type="email" autoComplete="email" inputMode="email"
+                    className={inputCls} placeholder="ahmed@email.com" value={vals.email} onChange={set("email")}
+                    aria-invalid={!!errs.email} aria-describedby={errs.email ? "email-err" : undefined} />
+                  {errs.email && <p id="email-err" className="text-xs text-red-500">{errs.email}</p>}
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-sm font-mono text-muted-foreground">téléphone</label>
-                  <input type="tel" className={inputCls} placeholder="06 00 00 00 00" value={vals.phone} onChange={set("phone")} />
-                  {errs.phone && <p className="text-xs text-red-500">{errs.phone}</p>}
+                  <label htmlFor="phone" className="text-sm font-mono text-muted-foreground">téléphone</label>
+                  <input id="phone" name="phone" type="tel" autoComplete="tel" inputMode="tel"
+                    className={inputCls} placeholder="06 00 00 00 00" value={vals.phone} onChange={set("phone")}
+                    aria-invalid={!!errs.phone} aria-describedby={errs.phone ? "phone-err" : undefined} />
+                  {errs.phone && <p id="phone-err" className="text-xs text-red-500">{errs.phone}</p>}
                 </div>
               </div>
               <div className="space-y-1.5">
-                <label className="text-sm font-mono text-muted-foreground">pack_choisi</label>
-                <select className={inputCls} value={vals.pack} onChange={set("pack")}>
+                <label htmlFor="pack" className="text-sm font-mono text-muted-foreground">pack_choisi</label>
+                <select id="pack" name="pack" className={inputCls} value={vals.pack} onChange={set("pack")}
+                  aria-invalid={!!errs.pack} aria-describedby={errs.pack ? "pack-err" : undefined}>
                   <option value="">Sélectionnez un pack</option>
                   {packs.map((p) => <option key={p} value={p}>{p}</option>)}
                 </select>
-                {errs.pack && <p className="text-xs text-red-500">{errs.pack}</p>}
+                {errs.pack && <p id="pack-err" className="text-xs text-red-500">{errs.pack}</p>}
+              </div>
+              <div className="space-y-1.5">
+                <label htmlFor="message" className="text-sm font-mono text-muted-foreground">
+                  message <span className="opacity-60">(optionnel)</span>
+                </label>
+                <textarea id="message" name="message" rows={4}
+                  className={`${inputCls} h-auto resize-y`}
+                  placeholder="Votre filière, votre sujet TIPE, vos échéances…"
+                  value={vals.message} onChange={set("message")} />
               </div>
               {serverError && (
                 <p className="text-sm text-red-500 font-mono bg-red-500/10 border border-red-500/20 rounded-md px-3 py-2">

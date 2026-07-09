@@ -1,0 +1,13 @@
+{
+  "name": "TIPE CPGE",
+  "short_name": "TIPE CPGE",
+  "description": "Accompagnement TIPE et préparation CNC 2026 pour les CPGE au Maroc.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d1a12",
+  "theme_color": "#22c55e",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/og-image.png", "type": "image/png", "sizes": "1200x630" }
+  ]
+}

@@ -1,12 +1,13 @@
 import { Link } from "wouter";
 import { SiInstagram, SiTiktok, SiWhatsapp } from "react-icons/si";
-import { FlaskConical, Mail, Phone, MapPin } from "lucide-react";
+import { FlaskConical, Phone, MapPin } from "lucide-react";
 
 const sitemapMain = [
   { label: "Accueil", path: "/" },
   { label: "FAQ", path: "/faq" },
   { label: "Contact", path: "/contact" },
   { label: "Études de cas", path: "/etudes-de-cas" },
+  { label: "Mentions légales", path: "/mentions-legales" },
 ];
 
 const sitemapCNC = [
@@ -19,7 +20,7 @@ const sitemapCNC = [
 const sitemapTipe = [
   { label: "Méthodologie", path: "/methodologie" },
   { label: "Ressources", path: "/ressources" },
-  { label: "Thèmes TIPE", path: "/methodologie" },
+  { label: "Thèmes TIPE", path: "/ressources" },
 ];
 
 export const Footer = () => (
@@ -95,7 +96,7 @@ export const Footer = () => (
           <div className="text-xs font-mono font-bold text-accent uppercase tracking-wider mb-4">Guide TIPE</div>
           <ul className="space-y-2.5">
             {sitemapTipe.map((l) => (
-              <li key={l.path}>
+              <li key={l.label}>
                 <Link href={l.path} className="text-sm text-muted-foreground hover:text-accent transition-colors">{l.label}</Link>
               </li>
             ))}
@@ -110,7 +111,7 @@ export const Footer = () => (
 
       {/* Bottom bar */}
       <div className="border-t border-border/40 pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-muted-foreground gap-3">
-        <p className="font-mono">© 2025 TIPE CPGE · Tous droits réservés</p>
+        <p className="font-mono">© {new Date().getFullYear()} TIPE CPGE · Tous droits réservés</p>
         <p className="font-mono text-primary/40">
           <span className="text-primary">{">"}</span> ./run --mode=réussite --target=grande_école
         </p>

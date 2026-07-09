@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MessageCircle, Clock, MapPin } from "lucide-react";
+import { Phone, MessageCircle, Clock, MapPin } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Contact } from "@/components/home/Contact";
 import { useSEO } from "@/lib/useSEO";
@@ -22,15 +22,6 @@ const contactInfo = [
     color: "text-primary",
     bg: "bg-primary/10 border-primary/20",
     hint: "Lun–Sam · 9h–20h",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: "faymane12@gmail.com",
-    href: "mailto:faymane12@gmail.com",
-    color: "text-accent",
-    bg: "bg-accent/10 border-accent/20",
-    hint: "Réponse sous 24h",
   },
   {
     icon: MapPin,

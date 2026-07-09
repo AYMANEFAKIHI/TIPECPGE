@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { Switch, Route } from "wouter";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ErrorBoundary } from "@/components/layout/ErrorBoundary";
 
 const Home = lazy(() => import("@/pages/Home"));
 const CNC2026Page = lazy(() => import("@/pages/CNC2026"));
@@ -13,6 +14,7 @@ const RessourcesPage = lazy(() => import("@/pages/Ressources"));
 const EtudesDeCasPage = lazy(() => import("@/pages/EtudesDeCas"));
 const FAQPage = lazy(() => import("@/pages/FAQPage"));
 const ContactPage = lazy(() => import("@/pages/ContactPage"));
+const MentionsLegales = lazy(() => import("@/pages/MentionsLegales"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 
 const RouteFallback = () => (
@@ -27,6 +29,7 @@ const RouteFallback = () => (
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="tipe-cpge-theme">
+      <ErrorBoundary>
       <Suspense fallback={<RouteFallback />}>
         <Switch>
           <Route path="/" component={Home} />
@@ -40,9 +43,11 @@ function App() {
           <Route path="/etudes-de-cas" component={EtudesDeCasPage} />
           <Route path="/faq" component={FAQPage} />
           <Route path="/contact" component={ContactPage} />
+          <Route path="/mentions-legales" component={MentionsLegales} />
           <Route component={NotFound} />
         </Switch>
       </Suspense>
+      </ErrorBoundary>
     </ThemeProvider>
   );
 }
