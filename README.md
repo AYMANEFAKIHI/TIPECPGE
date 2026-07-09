@@ -76,6 +76,23 @@ Le fichier `public/_redirects` est inclus pour le même besoin.
 ### Autre hébergeur statique
 Toute plateforme de hosting statique nécessite une règle de fallback SPA : `/* → /index.html (200)`. Sans cette règle, un rafraîchissement sur `/methodologie` renverra une 404 côté serveur.
 
+## Assistant de qualification (chat IA)
+
+Un widget de chat (bas-gauche) répond 24h/24 aux questions sur les **packs, tarifs et déroulement**, puis oriente les étudiants prêts vers WhatsApp (prioritaire) ou le formulaire de contact.
+
+- **Frontend** : `src/components/layout/ChatWidget.tsx` (monté dans `Layout.tsx`).
+- **Backend** : `api/chat.ts` — fonction serverless Vercel appelant l'API **Groq** (compatible OpenAI, modèle `llama-3.3-70b-versatile`). Ce fichier est hors du `tsconfig` de l'app : il n'affecte pas `npm run build` et est compilé séparément par Vercel.
+- **Garde-fous** (dans le prompt système de `api/chat.ts`) : ne répond que sur le service ; **n'invente jamais** de dates/coefficients CNC (renvoie vers `/cnc-2026` et `/calculateur`) ; **ne fait pas** le travail payant (propose le pack adapté).
+
+### Configuration — clé API Groq (obligatoire)
+1. Créer une clé gratuite sur https://console.groq.com/keys
+2. Dans Vercel : **Project → Settings → Environment Variables** → ajouter `GROQ_API_KEY` = votre clé (Production + Preview).
+3. Redéployer. La clé reste côté serveur ; elle n'est jamais exposée au navigateur.
+
+> En développement local (`npm run dev`), la fonction `/api` ne tourne pas — le widget affiche alors un repli WhatsApp. Pour tester l'IA en local, utiliser `vercel dev` avec `GROQ_API_KEY` dans un fichier `.env`.
+
+Changer de modèle ou de fournisseur : éditer `MODEL` / `GROQ_URL` dans `api/chat.ts`. Ajuster le ton, les prix ou les règles : éditer `SYSTEM_PROMPT` dans le même fichier.
+
 ## Personnalisation
 
 ### Numéro WhatsApp

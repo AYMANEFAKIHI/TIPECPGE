@@ -26,3 +26,5 @@ coverage/
 public/build/
 **/*.log
 **/*.tsbuildinfo
+.vercel
+.env*

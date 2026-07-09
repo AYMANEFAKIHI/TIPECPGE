@@ -3,6 +3,7 @@ import { Navbar } from "@/components/home/Navbar";
 import { Footer } from "@/components/home/Footer";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { PageTransition } from "@/components/layout/PageTransition";
+import { ChatWidget } from "@/components/layout/ChatWidget";
 
 const WhatsApp = () => (
   <a
@@ -34,6 +35,7 @@ export const Layout = ({ children, noBreadcrumbs }: LayoutProps) => {
       </PageTransition>
       <Footer />
       <WhatsApp />
+      <ChatWidget />
     </div>
   );
 };
