@@ -103,8 +103,8 @@ export const Footer = () => (
           </ul>
           {/* Trust badge */}
           <div className="mt-6 rounded-lg border border-primary/20 bg-primary/5 px-3 py-2.5">
-            <div className="text-[10px] font-mono font-bold text-primary uppercase tracking-wider mb-1">Thème 2025-2026</div>
-            <div className="text-sm font-semibold">"Cycles, Boucles"</div>
+            <div className="text-[10px] font-mono font-bold text-primary uppercase tracking-wider mb-1">Thème 2026-2027</div>
+            <div className="text-sm font-semibold">"Sobriété, efficacité et optimisation"</div>
           </div>
         </div>
       </div>

@@ -21,7 +21,7 @@ const ResourcesCTA = () => {
           </div>
           <h3 className="text-2xl font-bold mb-3">Un thème vous intéresse ?</h3>
           <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">
-            Nos encadrants peuvent vous aider à positionner votre sujet, valider sa faisabilité et le raccrocher au thème officiel "Cycles, Boucles".
+            Nos encadrants peuvent vous aider à positionner votre sujet, valider sa faisabilité et le raccrocher au thème officiel "Sobriété, efficacité et optimisation".
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button onClick={() => navigate("/contact")} className="w-full sm:w-auto rounded-lg font-semibold">

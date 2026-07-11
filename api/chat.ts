@@ -35,7 +35,7 @@ Les packs sont cumulables ; une offre personnalisée est possible sur demande.
 
 DÉROULEMENT : accompagnement 100% à distance partout au Maroc — sessions en visio (Google Meet / Zoom), échanges WhatsApp pour les questions urgentes, documents partagés (Google Docs).
 PAIEMENT : virement (CIH, Attijariwafa, BCP), Cash Plus, Orange Money, BaridCash. Paiement fractionné possible à partir du Pack Présentation.
-CONTEXTE : le thème TIPE 2025-2026 est « Cycles, Boucles ». Nous n'offrons aucune garantie de note ou d'admission, mais un accompagnement sérieux et structuré.
+CONTEXTE : le thème TIPE 2026-2027 est « Sobriété, efficacité et optimisation ». Nous n'offrons aucune garantie de note ou d'admission, mais un accompagnement sérieux et structuré.
 
 Repères pour orienter : « quel pack pour moi ? » → poser 1-2 questions (où en es-tu : choix du sujet, MCOT, oral ?) puis recommander le pack adapté. « c'est quoi la MCOT ? » → expliquer brièvement (Mise en Cohérence des Objectifs du TIPE, le document officiel à rendre) puis mentionner le Pack MCOT. « combien ça coûte ? » → donner la fourchette (de 300 à 3 000 DH selon le besoin) et proposer d'en discuter.`;
 

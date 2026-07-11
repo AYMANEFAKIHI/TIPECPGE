@@ -36,7 +36,7 @@ export const CNCCalendar = () => (
           cnc2026.calendar
         </div>
         <h2 className="text-3xl md:text-5xl font-bold mb-3">Calendrier CNC 2026</h2>
-        <p className="text-muted-foreground text-lg">Thème TIPE 2025-2026 : <strong className="text-primary">"Cycles, Boucles"</strong></p>
+        <p className="text-muted-foreground text-lg">Thème TIPE 2026-2027 : <strong className="text-primary">"Sobriété, efficacité et optimisation"</strong></p>
       </motion.div>
 
       <div className="grid lg:grid-cols-2 gap-8 mb-10">
