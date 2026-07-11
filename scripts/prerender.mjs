@@ -84,6 +84,32 @@ const render = (route) => {
     );
   }
 
+  // Article schema pour les pages de guide (/guides/<slug>, hors index /guides).
+  if (route.path.startsWith("/guides/")) {
+    const headline = route.title.replace(/\s*[|—-]\s*TIPE CPGE\s*$/, "").trim();
+    const article = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline,
+      description: route.description,
+      inLanguage: "fr",
+      mainEntityOfPage: url,
+      author: { "@type": "Organization", name: "TIPE CPGE", url: SITE_URL },
+      publisher: {
+        "@type": "Organization",
+        name: "TIPE CPGE",
+        logo: { "@type": "ImageObject", url: OG_IMAGE },
+      },
+      image: OG_IMAGE,
+      datePublished: "2026-07-11",
+      dateModified: "2026-07-11",
+    };
+    html = html.replace(
+      "</head>",
+      `  <script type="application/ld+json">${JSON.stringify(article)}</script>\n  </head>`
+    );
+  }
+
   return html;
 };
 

@@ -14,6 +14,8 @@ const RessourcesPage = lazy(() => import("@/pages/Ressources"));
 const EtudesDeCasPage = lazy(() => import("@/pages/EtudesDeCas"));
 const FAQPage = lazy(() => import("@/pages/FAQPage"));
 const ContactPage = lazy(() => import("@/pages/ContactPage"));
+const GuidesPage = lazy(() => import("@/pages/Guides"));
+const GuideArticle = lazy(() => import("@/pages/GuideArticle"));
 const MentionsLegales = lazy(() => import("@/pages/MentionsLegales"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 
@@ -43,6 +45,8 @@ function App() {
           <Route path="/etudes-de-cas" component={EtudesDeCasPage} />
           <Route path="/faq" component={FAQPage} />
           <Route path="/contact" component={ContactPage} />
+          <Route path="/guides" component={GuidesPage} />
+          <Route path="/guides/:slug" component={GuideArticle} />
           <Route path="/mentions-legales" component={MentionsLegales} />
           <Route component={NotFound} />
         </Switch>

@@ -18,6 +18,7 @@ const sitemapCNC = [
 ];
 
 const sitemapTipe = [
+  { label: "Guides pratiques", path: "/guides" },
   { label: "Méthodologie", path: "/methodologie" },
   { label: "Ressources", path: "/ressources" },
   { label: "Thèmes TIPE", path: "/ressources" },

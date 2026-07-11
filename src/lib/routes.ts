@@ -5,7 +5,7 @@ export interface RouteMeta {
   label: string;
   title: string;
   description: string;
-  group: "main" | "cnc" | "tipe" | "legal";
+  group: "main" | "cnc" | "tipe" | "legal" | "guides";
 }
 
 // Source de vérité unique — partagée avec le script de prerender (scripts/prerender.mjs)
