@@ -1,4 +1,40 @@
+# Tous les robots — accès complet
 User-agent: *
+Allow: /
+
+# Robots de recherche & d'IA générative explicitement autorisés
+# (indexation + utilisation du contenu pour les réponses IA / résumés)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://tipecpge.vercel.app/sitemap.xml

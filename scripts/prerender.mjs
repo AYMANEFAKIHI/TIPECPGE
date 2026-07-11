@@ -68,6 +68,22 @@ const render = (route) => {
     `$1${esc(url)}$2`
   );
 
+  // BreadcrumbList (Accueil → page courante) — injecté sur les pages internes.
+  if (route.path !== "/") {
+    const breadcrumb = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Accueil", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: route.label, item: url },
+      ],
+    };
+    html = html.replace(
+      "</head>",
+      `  <script type="application/ld+json">${JSON.stringify(breadcrumb)}</script>\n  </head>`
+    );
+  }
+
   return html;
 };
 

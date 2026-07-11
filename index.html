@@ -76,10 +76,40 @@
           "publisher": { "@id": "https://tipecpge.vercel.app/#organization" }
         },
         {
+          "@type": "Service",
+          "@id": "https://tipecpge.vercel.app/#service",
+          "name": "Accompagnement TIPE & Concours",
+          "serviceType": "Accompagnement pédagogique TIPE et préparation aux concours CNC, CNAEM et ISCAE",
+          "provider": { "@id": "https://tipecpge.vercel.app/#organization" },
+          "areaServed": { "@type": "Country", "name": "Maroc" },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Packs TIPE CPGE",
+            "itemListElement": [
+              { "@type": "Offer", "name": "Pack Accompagnement", "priceCurrency": "MAD", "price": "800", "description": "Conseil, aide au choix du sujet, brainstorming guidé, conseils bibliographiques et réponses aux blocages." },
+              { "@type": "Offer", "name": "Pack Faisabilité", "priceCurrency": "MAD", "price": "300", "description": "Étude de faisabilité, analyse des points forts et faibles, encadrement scientifique." },
+              { "@type": "Offer", "name": "Pack MCOT", "priceCurrency": "MAD", "price": "500", "description": "Rédaction complète de la MCOT, vérification des objectifs et optimisation du document." },
+              { "@type": "Offer", "name": "Pack Présentation", "priceCurrency": "MAD", "price": "1800", "description": "Préparation orale complète, simulation devant jury et réalisation de la présentation." },
+              { "@type": "Offer", "name": "Pack VIP", "priceCurrency": "MAD", "price": "3000", "description": "Accompagnement complet de A à Z, tous les packs inclus, priorité et disponibilité." },
+              { "@type": "Offer", "name": "Pack CNAEM / ISCAE", "priceCurrency": "MAD", "price": "3000", "description": "Préparation écrit et oral aux concours marocains de gestion, accompagnement personnalisé." }
+            ]
+          }
+        },
+        {
           "@type": "FAQPage",
           "@id": "https://tipecpge.vercel.app/faq#faqpage",
           "name": "FAQ TIPE CPGE",
-          "url": "https://tipecpge.vercel.app/faq"
+          "url": "https://tipecpge.vercel.app/faq",
+          "mainEntity": [
+            { "@type": "Question", "name": "Qu'est-ce que le TIPE exactement ?", "acceptedAnswer": { "@type": "Answer", "text": "Le TIPE (Travaux d'Initiative Personnelle Encadrés) est une épreuve orale des concours des grandes écoles d'ingénieurs. L'étudiant mène un projet de recherche scientifique sur un thème imposé annuellement, le présente devant un jury et répond à des questions techniques. Coefficient 8 sur 52 au CNC." } },
+            { "@type": "Question", "name": "Quand commencer son TIPE ?", "acceptedAnswer": { "@type": "Answer", "text": "Idéalement dès le début de la 2ème année CPGE (septembre/octobre), au plus tard en janvier. Plus tôt vous commencez, plus vous avez de temps pour la recherche, les simulations et la rédaction de la MCOT." } },
+            { "@type": "Question", "name": "Quel sujet TIPE choisir pour le thème Sobriété, efficacité et optimisation (2026-2027) ?", "acceptedAnswer": { "@type": "Answer", "text": "Le thème couvre toutes les filières autour de l'économie de ressources et du rendement. En MP : algorithmes d'optimisation, recherche du minimum d'énergie, compression de données. En PSI : rendement thermodynamique, optimisation de structure mécanique, efficacité énergétique. En TSI : optimisation de procédés, régulation pour réduire la consommation, gestion intelligente de l'énergie." } },
+            { "@type": "Question", "name": "Quelle est la différence entre le Pack Accompagnement et le Pack VIP ?", "acceptedAnswer": { "@type": "Answer", "text": "Le Pack Accompagnement (800 DH) couvre le conseil, le choix du sujet et les questions ponctuelles. Le Pack VIP (3 000 DH) intègre tout : accompagnement de A à Z, faisabilité, rédaction de la MCOT, préparation des slides et simulations d'oral." } },
+            { "@type": "Question", "name": "Les packs sont-ils cumulables ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, les packs se combinent selon vos besoins. Contactez-nous pour une offre personnalisée adaptée à votre situation." } },
+            { "@type": "Question", "name": "Comment se passe l'accompagnement ?", "acceptedAnswer": { "@type": "Answer", "text": "À distance partout au Maroc : sessions individuelles en visioconférence (Google Meet ou Zoom), échanges WhatsApp pour les questions urgentes et révisions de documents partagés." } },
+            { "@type": "Question", "name": "Comment se passe le paiement ?", "acceptedAnswer": { "@type": "Answer", "text": "Par virement bancaire (CIH, Attijariwafa, BCP), Cash Plus, Orange Money ou BaridCash. Paiement fractionné possible à partir du Pack Présentation." } },
+            { "@type": "Question", "name": "Y a-t-il une garantie de résultats ?", "acceptedAnswer": { "@type": "Answer", "text": "Nous ne garantissons pas une note ou une admission, car les concours dépendent de nombreux facteurs. Nous garantissons un TIPE structuré, une MCOT conforme et une préparation orale sérieuse." } }
+          ]
         }
       ]
     }
