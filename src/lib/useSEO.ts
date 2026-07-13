@@ -52,6 +52,15 @@ export const useSEO = () => {
     }
     canonical.setAttribute("href", url);
 
+    // GA4 pageview — gtag.js only auto-tracks the first load, so SPA route
+    // changes need an explicit page_view event to show up as separate pages.
+    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+    gtag?.("event", "page_view", {
+      page_title: meta.title,
+      page_location: url,
+      page_path: location,
+    });
+
     // Scroll to top
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, [location]);
