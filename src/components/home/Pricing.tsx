@@ -5,22 +5,9 @@ import { Button } from "@/components/ui/button";
 
 const packs = [
   {
-    icon: Zap,
-    name: "Pack Accompagnement",
-    badge: "Pack 1",
-    price: "800",
-    tagline: "Conseil, direction & blocages",
-    features: [
-      "Aide au choix du sujet",
-      "Brainstorming guidé",
-      "Conseils bibliographiques",
-      "Réponses aux questions de blocage",
-    ],
-  },
-  {
     icon: FlaskConical,
     name: "Pack Faisabilité",
-    badge: "Pack 2",
+    badge: "Pack 1",
     price: "300",
     tagline: "Valider votre sujet",
     features: [
@@ -32,13 +19,26 @@ const packs = [
   {
     icon: FileText,
     name: "Pack MCOT",
-    badge: "Pack 3",
+    badge: "Pack 2",
     price: "500",
     tagline: "Le document officiel",
     features: [
       "Rédaction MCOT complète",
       "Vérification des objectifs",
       "Optimisation du document",
+    ],
+  },
+  {
+    icon: Zap,
+    name: "Pack Accompagnement",
+    badge: "Pack 3",
+    price: "800",
+    tagline: "Conseil, direction & blocages",
+    features: [
+      "Aide au choix du sujet",
+      "Brainstorming guidé",
+      "Conseils bibliographiques",
+      "Réponses aux questions de blocage",
     ],
   },
   {
